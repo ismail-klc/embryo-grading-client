@@ -1,10 +1,12 @@
 import React from "react";
 
 const aasd = () => {
-   <div>
-      welcome to index js ismail repo
-      <div>cxzzcxzcx</div>
+  return (
+    <div>
+      welcome to index js ozkan repo
+      <div>21321321</div>
     </div>
+  );
 };
 
 export default aasd;
