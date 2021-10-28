@@ -1,7 +1,10 @@
 import React from "react";
 
 const aasd = () => {
-  return <div>welcome to index js ismail repo</div>;
+   <div>
+      welcome to index js ismail repo
+      <div>cxzzcxzcx</div>
+    </div>
 };
 
 export default aasd;
