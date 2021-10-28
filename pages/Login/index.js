@@ -1,7 +1,7 @@
 import React from "react";
 
 const aasd = () => {
-  return <div></div>;
+  return <div>welcome to index js</div>;
 };
 
 export default aasd;
