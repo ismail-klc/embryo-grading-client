@@ -1,12 +1,21 @@
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 
-const Login = () => {
+const Register = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [policy, setPolicy] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    console.log(username, email, password, confirmPassword, policy);
   };
 
   return (
@@ -24,9 +33,20 @@ const Login = () => {
           className="container mw-50  "
         >
           <div className="row vh-100  align-items-center">
-            <div className="col shadow-sm p-3 mb-5 bg-body rounded p-5 rounded">
-              <h2>Login</h2>
+            <div className="col shadow-sm bg-body rounded p-5 rounded">
+              <h2>Register</h2>
               <form onSubmit={submitHandler}>
+                <div className="mb-3">
+                  <label htmlFor="userName" className="form-label">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control shadow-sm"
+                    id="userName"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Email address
@@ -50,22 +70,43 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleConfirmInputPassword1"
+                    className="form-label"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control shadow-sm"
+                    id="exampleConfirmInputPassword1"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
                 <div className="mb-3 form-check">
                   <input
                     type="checkbox"
                     className="form-check-input shadow-sm"
                     id="exampleCheck1"
+                    onChange={(e) => setPolicy(e.target.checked)}
                   />
                   <label className="form-check-label" htmlFor="exampleCheck1">
-                    Remember me
+                    I agree with the{" "}
+                    <a
+                      href="#/"
+                      className="link-secondary text-decoration-underline"
+                    >
+                      Privacy Policy
+                    </a>
                   </label>
                 </div>
                 <button type="submit" className="btn btn-primary shadow-sm">
-                  Sign in
+                  Register
                 </button>
                 <div className="mt-2">
-                  <Link href="/register">
-                    <a className="link-primary">Create new account</a>
+                  <Link href="/login">
+                    <a className="link-primary">Already have an account? </a>
                   </Link>
                 </div>
               </form>
@@ -77,4 +118,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
