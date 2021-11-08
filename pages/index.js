@@ -1,8 +1,9 @@
+import Admin from "../components/Layouts/Admin";
 
 export default function Home() {
   return (
-    <div className="bg-gray-700">
-      home
-    </div>
+    <Admin>
+        home
+    </Admin>
   )
 }
