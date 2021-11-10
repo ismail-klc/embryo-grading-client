@@ -15,7 +15,7 @@ export default function Sidebar() {
                     <button
                         className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                         type="button"
-                        onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+                        onClick={() => setCollapseShow("md:bg-gray-200 bg-white md:m-0 m-2 md:py-0 py-3 md:px-0 px-6")}
                     >
                         <Icon size={22} name="menu" />
                     </button>
@@ -39,8 +39,7 @@ export default function Sidebar() {
                         className={
                             "md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded " +
                             collapseShow
-                        }
-                    >
+                        } >
                         {/* Collapse header */}
                         <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
                             <div className="flex flex-wrap">
@@ -59,7 +58,7 @@ export default function Sidebar() {
                                         className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                                         onClick={() => setCollapseShow("hidden")}
                                     >
-                                        X
+                                        <Icon size={22} name="close" />
                                     </button>
                                 </div>
                             </div>
