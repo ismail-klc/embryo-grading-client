@@ -1,0 +1,22 @@
+  .rdt_Table {
+    border: 1px solid #555;
+  }
+
+  .rdt_TableCol {
+    background-color: #343049;
+    color: white;
+    font-weight: bolder;
+  }
+
+  .rdt_TableHeader {
+    background-color: transparent;
+  }
+  
+  .rdt_TableHead {
+    border-radius: 10px;
+  }
+  
+  .rdt_TableHeadRow {
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
