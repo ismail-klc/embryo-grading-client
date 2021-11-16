@@ -15,63 +15,53 @@ const Login = () => {
   return (
     <Fragment>
       <div
-        style={{
-          background: "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)",
-          /*   background: "linear-gradient(to right, #000000, #434343)",*/
-        }}
+        style={
+          {
+            // background: "linear-gradient(to right, #434343 0%, black 100%);",
+            /*   background: "linear-gradient(to right, #000000, #434343)",*/
+          }
+        }
       >
-        <div
-          style={{
-            maxWidth: "576px",
-          }}
-          className="container mw-50  "
-        >
-          <div className="row vh-100  align-items-center">
-            <div className="col shadow-sm p-3 mb-5 bg-body rounded p-5 rounded">
-              <h2>Login</h2>
-              <form onSubmit={submitHandler}>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control shadow-sm"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control shadow-sm"
-                    id="exampleInputPassword1"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input shadow-sm"
-                    id="exampleCheck1"
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    Remember me
-                  </label>
-                </div>
-                <button type="submit" className="btn btn-primary shadow-sm">
-                  Sign in
-                </button>
-                <div className="mt-2">
-                  <Link href="/register">
-                    <a className="link-primary">Create new account</a>
-                  </Link>
-                </div>
-              </form>
+        <div className="bg-grey-lighter min-h-screen flex flex-col">
+          <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+              <h1 className="mb-8 text-3xl text-center">Giriş Yap</h1>
+              <input
+                type="text"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
+                name="fullname"
+                placeholder="Kullanıcı Adı"
+              />
+
+              <input
+                type="text"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
+                name="email"
+                placeholder="E-posta"
+              />
+
+              <input
+                type="password"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                placeholder="Şifre"
+              />
+
+              <button
+                type="submit"
+                className="w-full text-center py-3 rounded bg-green-400 text-dark hover:bg-green-dark focus:outline-none my-1"
+              >
+                Giriş Yap
+              </button>
+            </div>
+
+            <div className="text-dark mt-6">
+              Henüz bir hesabınız yok mu?{" "}
+              <Link href="/register">
+                <a className="no-underline border-b border-blue text-blue">
+                  Hesap Oluştur
+                </a>
+              </Link>
             </div>
           </div>
         </div>

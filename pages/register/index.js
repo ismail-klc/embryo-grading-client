@@ -20,97 +20,69 @@ const Register = () => {
 
   return (
     <Fragment>
-      <div
-        style={{
-          background: "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)",
-          /*   background: "linear-gradient(to right, #000000, #434343)",*/
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "576px",
-          }}
-          className="container mw-50  "
-        >
-          <div className="row vh-100  align-items-center">
-            <div className="col shadow-sm bg-body rounded p-5 rounded">
-              <h2>Register</h2>
-              <form onSubmit={submitHandler}>
-                <div className="mb-3">
-                  <label htmlFor="userName" className="form-label">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control shadow-sm"
-                    id="userName"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control shadow-sm"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control shadow-sm"
-                    id="exampleInputPassword1"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label
-                    htmlFor="exampleConfirmInputPassword1"
-                    className="form-label"
-                  >
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control shadow-sm"
-                    id="exampleConfirmInputPassword1"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input shadow-sm"
-                    id="exampleCheck1"
-                    onChange={(e) => setPolicy(e.target.checked)}
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    I agree with the{" "}
-                    <a
-                      href="#/"
-                      className="link-secondary text-decoration-underline"
-                    >
-                      Privacy Policy
-                    </a>
-                  </label>
-                </div>
-                <button type="submit" className="btn btn-primary shadow-sm">
-                  Register
-                </button>
-                <div className="mt-2">
-                  <Link href="/login">
-                    <a className="link-primary">Already have an account? </a>
-                  </Link>
-                </div>
-              </form>
+      <div className="bg-grey-lighter min-h-screen flex flex-col">
+        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+          <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <h1 className="mb-8 text-3xl text-center">Hesap Oluştur</h1>
+            <input
+              type="text"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
+              name="fullname"
+              placeholder="Kullanıcı Adı"
+            />
+
+            <input
+              type="text"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
+              name="email"
+              placeholder="E-posta"
+            />
+
+            <input
+              type="password"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
+              name="password"
+              placeholder="Şifre"
+            />
+            <input
+              type="password"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
+              name="confirm_password"
+              placeholder="Şifre Onayla"
+            />
+
+            <button
+              type="submit"
+              className="w-full text-center py-3 rounded bg-green-400 text-dark hover:bg-green-dark focus:outline-none my-1"
+            >
+              Hesap Oluştur
+            </button>
+
+            <div className="text-center text-sm text-grey-dark mt-4">
+              By signing up, you agree to the{" "}
+              <a
+                className="no-underline border-b border-grey-dark text-grey-dark"
+                href="#"
+              >
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a
+                className="no-underline border-b border-grey-dark text-grey-dark"
+                href="#"
+              >
+                Privacy Policy
+              </a>
             </div>
+          </div>
+
+          <div className="text-grey-dark mt-6">
+            Hesabım var?{" "}
+            <Link href="/login">
+              <a className="no-underline border-b border-blue text-blue">
+                Giriş yap
+              </a>
+            </Link>
           </div>
         </div>
       </div>
