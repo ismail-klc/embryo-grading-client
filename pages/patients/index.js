@@ -1,6 +1,7 @@
 import React from 'react'
 import Admin from '../../components/Layouts/Admin'
 import DataTable from 'react-data-table-component';
+import Link from "next/link";
 
 const columns = [
     {
@@ -18,7 +19,12 @@ const columns = [
     },
     {
         name: '',
-        selector: row => <button className="py-2 px-3 text-white rounded-md bg-gray-600">Detay</button>,
+        selector: row => 
+            <Link href={`/patients/${row.id}`}>
+                <a className="py-2 px-3 flex text-white rounded-md bg-gray-600">
+                    Detay
+                </a>
+            </Link>,
     },
 ];
 
