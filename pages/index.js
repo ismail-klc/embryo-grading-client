@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Admin from "../components/Layouts/Admin";
 
 export default function Home() {
   return (
-    <div>
-      home
-    </div>
+    <Admin>
+        home
+    </Admin>
   )
 }

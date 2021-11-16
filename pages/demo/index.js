@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import ImageUpload from '../../components/ImageUpload'
+import Admin from '../../components/Layouts/Admin'
 
 function DemoPage() {
     const [image, setImage] = useState('')
@@ -18,7 +19,7 @@ function DemoPage() {
     }
 
     return (
-        <div>
+        <Admin>
             <ImageUpload
                 btnAction={handleDemoAction}
                 btnText={'Predict'}
@@ -33,7 +34,7 @@ function DemoPage() {
                     <img src={reviewImage} />
                 </div>
             }
-        </div>
+        </Admin>
     )
 }
 
