@@ -22,7 +22,7 @@ function DemoPage() {
         <Admin>
             <ImageUpload
                 btnAction={handleDemoAction}
-                btnText={'Predict'}
+                btnText={'Tahmin Et'}
                 image={image}
                 setImage={setImage}
             />

@@ -25,7 +25,7 @@ function ImageUpload(props) {
 
     return (
         <div className="fileUpload">
-                <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Add Image</button>
+                <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Resim Ekle</button>
                 {
                     !imgPath &&
                     <div className="imageUploadWrap">
@@ -33,7 +33,7 @@ function ImageUpload(props) {
                         value={props.image}
                         className="fileUploadInput" ref={inputFile} type='file' onChange={readURL} accept="image/*" />
                         <div className="dragText">
-                            <h3>Drag and drop a file or select add Image</h3>
+                            <h3>Resmi sürükle bırak veya bir resim seçmek için tıkla</h3>
                         </div>
                     </div>
                 }
@@ -42,11 +42,9 @@ function ImageUpload(props) {
                     <div className="fileUploadContent">
                         <img className="fileUploadImage" src={imgPath} alt="your image" />
                         <div className="imageTitleWrap">
-                            <button type="button" onClick={removeUpload} className="removeImage">Remove &nbsp;
-                                <span className="imageTitle">Uploaded Image</span>
+                            <button type="button" onClick={removeUpload} className="removeImage">Kaldır &nbsp;
                             </button>
                             <button onClick={props.btnAction} type="button" className="removeImage">{props.btnText} &nbsp;
-                                <span className="imageTitle">Uploaded Image</span>
                             </button>
                         </div>
                     </div>
