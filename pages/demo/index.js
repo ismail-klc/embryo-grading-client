@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import ImageUpload from '../../components/ImageUpload'
 import Admin from '../../components/Layouts/Admin'
+import Image from 'next/image'
 
 function DemoPage() {
     const [image, setImage] = useState('')
@@ -19,7 +20,7 @@ function DemoPage() {
     }
 
     return (
-        <Admin>
+        <Admin title="Demo">
             <ImageUpload
                 btnAction={handleDemoAction}
                 btnText={'Tahmin Et'}
@@ -31,7 +32,13 @@ function DemoPage() {
                 label &&
                 <div style={{ margin: '75px 0', textAlign: 'center' }}>
                     <h2>{label}</h2>
-                    <img src={reviewImage} />
+                    <Image
+                        className="fileUploadImage"
+                        src={reviewImage}
+                        alt="your image"
+                        width={500}
+                        height={500}
+                    />
                 </div>
             }
         </Admin>

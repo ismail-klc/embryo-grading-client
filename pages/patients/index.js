@@ -45,7 +45,7 @@ const PatientsPage = () => {
     const { data, error } = useSWR(`${process.env.API}/patients`, fetcher)
 
     return (
-        <Admin>
+        <Admin title={"Hastalar"}>
             <DataTable
                 title="Hastalar"
                 columns={columns}

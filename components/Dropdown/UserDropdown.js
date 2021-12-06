@@ -1,6 +1,7 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
 import Link from "next/link";
+import Image from 'next/image'
 
 const UserDropdown = () => {
   // dropdown props
@@ -29,10 +30,12 @@ const UserDropdown = () => {
       >
         <div className="items-center flex">
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-            <img
-              alt="..."
+            <Image
               className="w-full rounded-full align-middle border-none shadow-lg"
               src="/img/team-1-800x800.jpg"
+              alt="Picture of the author"
+              width={500}
+              height={500}
             />
           </span>
         </div>

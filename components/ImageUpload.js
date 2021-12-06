@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import Image from 'next/image'
 
 function ImageUpload(props) {
     const [imgPath, setImgPath] = useState("")
@@ -25,31 +26,37 @@ function ImageUpload(props) {
 
     return (
         <div className="fileUpload">
-                <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Resim Ekle</button>
-                {
-                    !imgPath &&
-                    <div className="imageUploadWrap">
-                        <input
+            <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Resim Ekle</button>
+            {
+                !imgPath &&
+                <div className="imageUploadWrap">
+                    <input
                         value={props.image}
                         className="fileUploadInput" ref={inputFile} type='file' onChange={readURL} accept="image/*" />
-                        <div className="dragText">
-                            <h3>Resmi sürükle bırak veya bir resim seçmek için tıkla</h3>
-                        </div>
+                    <div className="dragText">
+                        <h3>Resmi sürükle bırak veya bir resim seçmek için tıkla</h3>
                     </div>
-                }
-                {
-                    imgPath &&
-                    <div className="fileUploadContent">
-                        <img className="fileUploadImage" src={imgPath} alt="your image" />
-                        <div className="imageTitleWrap">
-                            <button type="button" onClick={removeUpload} className="removeImage">Kaldır &nbsp;
-                            </button>
-                            <button onClick={props.btnAction} type="button" className="removeImage">{props.btnText} &nbsp;
-                            </button>
-                        </div>
+                </div>
+            }
+            {
+                imgPath &&
+                <div className="fileUploadContent">
+                    <Image
+                        className="fileUploadImage py-4"
+                        src={imgPath}
+                        alt="your image"
+                        width={500}
+                        height={500}
+                    />
+                    <div className="imageTitleWrap">
+                        <button type="button" onClick={removeUpload} className="removeImage">Kaldır &nbsp;
+                        </button>
+                        <button onClick={props.btnAction} type="button" className="removeImage">{props.btnText} &nbsp;
+                        </button>
                     </div>
-                }
-            </div>
+                </div>
+            }
+        </div>
     )
 }
 

@@ -2,11 +2,12 @@ import axios from 'axios'
 import { format } from 'date-fns'
 import React from 'react'
 import Admin from '../../components/Layouts/Admin'
+import Image from 'next/image'
 
 const PatientProfile = ({ data }) => {
 
     return (
-        <Admin>
+        <Admin title={`Hasta - ${data.firstName} ${data.lastName}`}>
             <div className="bg-gray-100">
                 <div className="w-full mb-10 text-white bg-main-color">
                     <div
@@ -15,16 +16,6 @@ const PatientProfile = ({ data }) => {
                             <a href="#"
                                 className="text-lg text-black font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
                                 Hasta Detay</a>
-                            <button className="md:hidden rounded-lg focus:outline-none focus:shadow-outline" >
-                                <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
-                                    <path x-show="!open" fillRule="evenodd"
-                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                                        clipRule="evenodd"></path>
-                                    <path x-show="open" fillRule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clipRule="evenodd"></path>
-                                </svg>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -34,9 +25,13 @@ const PatientProfile = ({ data }) => {
                         <div className="w-full md:w-3/12 md:mx-2">
                             <div className="bg-white p-3 border-t-4 border-green-400">
                                 <div className="image overflow-hidden">
-                                    <img className="h-auto w-full mx-auto"
+                                    <Image
+                                        className="h-auto w-full mx-auto"
                                         src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
-                                        alt="" />
+                                        alt="Picture of the patient"
+                                        width={500}
+                                        height={500}
+                                    />
                                 </div>
                                 <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{data.firstName + " " + data.lastName}</h1>
                                 {/* <h3 className="text-gray-600 font-lg text-semibold leading-6">hasta1@gmail.com</h3> */}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import useRequest from '../../hooks/use-request'
 import Errors from "../../components/Errors";
 import Router from 'next/router';
+import Head from 'next/head'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,8 +24,11 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div
-      >
+      <Head>
+        <title>Giriş Yap</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div>
         <div className="bg-grey-lighter min-h-screen flex flex-col">
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <form onSubmit={submitHandler} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">

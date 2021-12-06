@@ -34,7 +34,7 @@ const AddPatient = (props) => {
     }
 
     return (
-        <Admin>
+        <Admin title={"Hasta Ekle"}>
             <h2 className="uppercase text-lg text-center">Yeni Hasta Ekle</h2>
             <div className="flex justify-center items-center w-full mb-10 ">
                 <div className="w-full rounded shadow-2xl p-8 my-4 mx-20 bg-gray-200">

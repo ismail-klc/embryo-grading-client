@@ -18,7 +18,7 @@ function Logout() {
     return (
         <>
             <Head>
-                <title>Signing out</title>
+                <title>Çıkış Yapılıyor</title>
             </Head>
             <div className="container-fluid text-center mt-5">
                 Çıkış yapılıyor ...

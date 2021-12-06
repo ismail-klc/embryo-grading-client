@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import CardBarChart from "../components/Cards/CardBarChart";
 import CardLineChart from "../components/Cards/CardLineChart";
 import CardPageVisits from "../components/Cards/CardPageVisits";
@@ -10,15 +9,8 @@ import Admin from "../components/Layouts/Admin";
 
 export default function Home(props) {
 
-  useEffect(() => {
-    console.log(props);
-    var tokens = props.cookies.jwt.split(".");
-    console.log(JSON.parse(atob(tokens[1])).id);
-  }, [])
-
-
   return (
-    <Admin>
+    <Admin title="Anasayfa">
       <CardBarChart />
       <CardLineChart />
       <CardPageVisits />
@@ -27,13 +19,4 @@ export default function Home(props) {
       <CardStats />
     </Admin>
   );
-}
-
-
-
-export const getServerSideProps = async (ctx) => {
-  const { req } = ctx
-  const { cookies } = req
-
-  return { props: { cookies } }
 }
