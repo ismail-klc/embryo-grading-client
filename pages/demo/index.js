@@ -1,13 +1,17 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ImageUpload from '../../components/ImageUpload'
 import Admin from '../../components/Layouts/Admin'
-import Image from 'next/image'
 
 function DemoPage() {
     const [image, setImage] = useState('')
     const [label, setLabel] = useState('')
     const [reviewImage, setreviewImage] = useState('')
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        window.scrollTo({ top: 1000, behavior:'smooth' })
+    }, [loaded]);
 
     const handleDemoAction = async () => {
         const formData = new FormData()
@@ -25,22 +29,23 @@ function DemoPage() {
                 btnAction={handleDemoAction}
                 btnText={'Tahmin Et'}
                 image={image}
+                setReviewImage={setreviewImage}
                 setImage={setImage}
             />
 
             {
-                label &&
+                label && reviewImage &&
                 <div style={{ margin: '75px 0', textAlign: 'center' }}>
                     <h2>{label}</h2>
-                    <Image
+                    <img
                         className="fileUploadImage"
                         src={reviewImage}
                         alt="your image"
-                        width={500}
-                        height={500}
+                        onLoad={() => setLoaded(!loaded)}
                     />
                 </div>
             }
+            <div id="end"></div>
         </Admin>
     )
 }

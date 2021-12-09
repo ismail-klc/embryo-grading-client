@@ -22,10 +22,11 @@ function ImageUpload(props) {
     const removeUpload = () => {
         setImgPath("")
         props.setImage("")
+        props.setReviewImage("")
     }
 
     return (
-        <div className="fileUpload">
+        <div className="fileUpload -mt-14">
             <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Resim Ekle</button>
             {
                 !imgPath &&
@@ -45,8 +46,8 @@ function ImageUpload(props) {
                         className="fileUploadImage py-4"
                         src={imgPath}
                         alt="your image"
-                        width={500}
-                        height={500}
+                        width={400}
+                        height={400}
                     />
                     <div className="imageTitleWrap">
                         <button type="button" onClick={removeUpload} className="removeImage">Kaldır &nbsp;
