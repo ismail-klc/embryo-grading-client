@@ -32,7 +32,7 @@ const columns = [
         name: '',
         selector: row =>
             <Link href={`/patients/${row.id}`}>
-                <a className="py-2 px-3 flex text-white rounded-md bg-gray-600">
+                <a aria-label="detail-page" className="py-2 px-3 flex text-white rounded-md bg-gray-600">
                     Detay
                 </a>
             </Link>,

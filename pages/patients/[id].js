@@ -99,10 +99,12 @@ const PatientProfile = ({ data }) => {
                                 </div>
                                 <div className="space-x-4 flex">
                                     <button
+                                        aria-label="add-record"
                                         className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
                                      focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                                         Yeni Kayıt Ekle</button>
                                     <button
+                                        aria-label="see-records"
                                         className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
                                      focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                                         Kayıtları Gör</button>

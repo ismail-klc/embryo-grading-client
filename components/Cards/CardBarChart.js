@@ -104,12 +104,12 @@ export default function CardBarChart() {
         <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
-              <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
-                Perfornmans
-              </h6>
-              <h2 className="text-blueGray-700 text-xl font-semibold">
-                Toplam Hasta Sayısı
+              <h2 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
+                Performans
               </h2>
+              <h6 className="text-blueGray-700 text-xl font-semibold">
+                Toplam Hasta Sayısı
+              </h6>
             </div>
           </div>
         </div>
