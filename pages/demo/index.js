@@ -10,7 +10,7 @@ function DemoPage() {
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        window.scrollTo({ top: 1000, behavior:'smooth' })
+        window.scrollTo({ top: 1000, behavior: 'smooth' })
     }, [loaded]);
 
     const handleDemoAction = async () => {
@@ -45,7 +45,6 @@ function DemoPage() {
                     />
                 </div>
             }
-            <div id="end"></div>
         </Admin>
     )
 }

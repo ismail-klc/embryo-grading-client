@@ -21,7 +21,6 @@ function ImageUpload(props) {
 
     const removeUpload = () => {
         setImgPath("")
-        props.setImage("")
         props.setReviewImage("")
     }
 

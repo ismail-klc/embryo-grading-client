@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { format } from 'date-fns'
 import React from 'react'
-import Admin from '../../components/Layouts/Admin'
+import Admin from '../../../components/Layouts/Admin'
 import Image from 'next/image'
+import Link from 'next/link'
+import { tr } from 'date-fns/locale'
 
 const PatientProfile = ({ data }) => {
 
@@ -34,10 +36,6 @@ const PatientProfile = ({ data }) => {
                                     />
                                 </div>
                                 <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{data.firstName + " " + data.lastName}</h1>
-                                {/* <h3 className="text-gray-600 font-lg text-semibold leading-6">hasta1@gmail.com</h3> */}
-                                <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit.
-                                    Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
                                 <ul
                                     className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                                     <li className="flex items-center py-3">
@@ -47,7 +45,7 @@ const PatientProfile = ({ data }) => {
                                     </li>
                                     <li className="flex items-center py-3">
                                         <span>Eklenme Tarihi</span>
-                                        <span className="ml-auto">{format(new Date(data.createdAt), 'MMMM dd, yyyy')}</span>
+                                        <span className="ml-auto">{format(new Date(data.createdAt), 'dd MMMM, yyyy', { locale: tr })}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -93,21 +91,25 @@ const PatientProfile = ({ data }) => {
 
                                         <div className="grid grid-cols-2">
                                             <div className="px-4 py-2 font-semibold">Doğum Tarihi</div>
-                                            <div className="px-4 py-2">{format(new Date(data.birthDate), 'MMMM dd, yyyy')}</div>
+                                            <div className="px-4 py-2">{format(new Date(data.birthDate), 'dd MMMM, yyyy', { locale: tr })}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-x-4 flex">
-                                    <button
-                                        aria-label="add-record"
-                                        className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
+                                    <Link href={`/patients/${data.id}/records/add`}>
+                                        <a
+                                            aria-label="add-record"
+                                            className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
                                      focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                                        Yeni Kayıt Ekle</button>
-                                    <button
-                                        aria-label="see-records"
-                                        className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
+                                            Yeni Kayıt Ekle</a>
+                                    </Link>
+                                    <Link href={`/patients/${data.id}/records`}>
+                                        <a
+                                            aria-label="see-records"
+                                            className="w-1/2 text-blue-800 bg-gray-200 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline
                                      focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                                        Kayıtları Gör</button>
+                                            Kayıtları Gör</a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

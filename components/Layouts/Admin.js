@@ -21,7 +21,7 @@ export default function Admin({ children, title }) {
             <div className="relative md:ml-64">
                 <AdminNavbar />
                 <HeaderStats />
-                <div className="px-4 md:px-10 mx-auto w-full -m-28">
+                <div className="px-4 md:px-10 mx-auto w-full -m-28 mb-20">
                     {children}
                 </div>
             </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import useSWR from 'swr';
 import axios from 'axios';
 import { format } from 'date-fns'
+import { tr } from 'date-fns/locale'
 
 const columns = [
     {
@@ -26,7 +27,7 @@ const columns = [
     },
     {
         name: 'Doğum Tarihi',
-        selector: row => format(new Date(row.birthDate), 'dd MMMM, yyyy'),
+        selector: row => format(new Date(row.birthDate), 'dd MMMM, yyyy', { locale: tr }),
     },
     {
         name: '',
