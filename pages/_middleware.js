@@ -4,20 +4,29 @@ async function authMiddleware(req, ev) {
     // const token = req.cookies.jwt;
 
     const authUrls = ["/login", "/register"]
+    let data;
 
-    const data = await fetch(`${process.env.API}/doctors/me`,
-        {
-            credentials: true, headers: req.headers
-        })
-    if (data.status === 200 && authUrls.includes(req.url)) {
-        return NextResponse.redirect('/')
+    try {
+        data = await fetch(`${process.env.API}/doctors/me`,
+            {
+                credentials: true, headers: req.headers
+            })
+        if (data.status === 200 && authUrls.includes(req.url)) {
+            return NextResponse.redirect('/')
+        }
+
+        if (data.status === 401 && !authUrls.includes(req.url)) {
+            return NextResponse.redirect('/login');
+        }
+
+        return NextResponse.next()
+    } catch (error) {
     }
 
-    if (data.status === 401 && !authUrls.includes(req.url)) {
-        return NextResponse.redirect('/login');
-    }
+    return new Response('Server not working', {
+        status: 401,
+    })
 
-    return NextResponse.next()
 }
 
 export default authMiddleware
