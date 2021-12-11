@@ -3,6 +3,7 @@ import Admin from '../../../../components/Layouts/Admin'
 import { useDropzone } from "react-dropzone";
 import axios from 'axios';
 import Router from 'next/router';
+import { toast } from 'react-toastify';
 
 const AddRecord = ({ data }) => {
     const [images, setImages] = useState([])
@@ -12,12 +13,6 @@ const AddRecord = ({ data }) => {
         acceptedFiles.forEach(file => {
             setImages(prevState => [...prevState, file])
             setPreviews(prevState => [...prevState, URL.createObjectURL(file)])
-            
-            // const reader = new FileReader()
-            // reader.onload = () => {
-            //     setImages(prevState => [...prevState, reader.result])
-            // }
-            // reader.readAsDataURL(file)
         })
     }, [])
 
@@ -28,17 +23,40 @@ const AddRecord = ({ data }) => {
 
     const handleUpload = async () => {
         const formData = new FormData()
+        const resolvePredict = new Promise(async (resolve,reject) => {
+            try {
+                for (let i = 0; i < images.length; i++) {
+                    const form = new FormData()
+                    form.append('file', images[i])
+                    const res = await axios.post(process.env.MODEL_API, form);
+                    formData.append(res.data.result, images[i])
+                }
+    
+                resolve("OK");
+            } catch (error) {
+                reject();
+            }
+        });
 
-        for (let i = 0; i < images.length; i++) {
-            const form = new FormData()
-            form.append('file', images[i])
-            const res = await axios.post(process.env.MODEL_API, form);
-            formData.append(res.data.result, images[i])
-        }
-        axios
-            .post(`${process.env.API}/patients/${data.id}/records`, formData, { withCredentials: true })
-            .then(res => Router.push(`/patients/${data.id}`))
-            .catch(err => console.log(err))
+        await toast.promise(
+            resolvePredict,
+            {
+                pending: 'Tahmin işlemi gerçekleştiriliyor',
+                success: 'Tahmin işlemi başarılı',
+                error: 'Tahmin işlemi başarısız 🤯'
+            }
+        );
+
+        await toast.promise(
+            axios.post(`${process.env.API}/patients/${data.id}/records`, formData, { withCredentials: true }),
+            {
+                pending: 'Veritabanına kaydediliyor',
+                success: 'Kayıt başarılı',
+                error: 'İşlem başarısız 🤯'
+            }
+        );
+
+        Router.push(`/patients/${data.id}/records`)
     }
 
     return (
@@ -51,8 +69,8 @@ const AddRecord = ({ data }) => {
             {
                 images.length > 0 &&
                 <button
-                className='py-2 px-4 my-4 font-semibold rounded-lg shadow-md text-white bg-blue-400 hover:bg-blue-700'
-                onClick={handleUpload}>Resimleri Yükle</button>
+                    className='py-2 px-4 my-4 font-semibold rounded-lg shadow-md text-white bg-blue-400 hover:bg-blue-700'
+                    onClick={handleUpload}>Resimleri Yükle</button>
             }
             {
                 previews.length > 0 &&

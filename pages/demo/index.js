@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import ImageUpload from '../../components/ImageUpload'
 import Admin from '../../components/Layouts/Admin'
+import { toast } from 'react-toastify';
 
 function DemoPage() {
     const [image, setImage] = useState('')
@@ -17,10 +18,23 @@ function DemoPage() {
         const formData = new FormData()
         formData.append('file', image)
 
-        const res = await axios.post(process.env.MODEL_API, formData);
-        setLabel(res.data.result)
-        setreviewImage(URL.createObjectURL(image))
-        setImage('')
+        try {
+            const res = await toast.promise(
+                axios.post(process.env.MODEL_API, formData),
+                {
+                    pending: 'Tahmin işlemi gerçekleştiriliyor',
+                    success: 'İşlem başarılı 👌',
+                    error: 'İşlem başarısız 🤯'
+                }
+            );
+
+            setLabel(res.data.result)
+            setreviewImage(URL.createObjectURL(image))
+            setImage('')
+        } catch (error) {
+
+        }
+
     }
 
     return (

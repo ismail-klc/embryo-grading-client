@@ -4,6 +4,7 @@ import Errors from "../../components/Errors";
 import Admin from '../../components/Layouts/Admin'
 import useRequest from "../../hooks/use-request";
 import Router from 'next/router';
+import { toast } from 'react-toastify';
 
 const AddPatient = (props) => {
     const [doctorId, setDoctorId] = useState(0)
@@ -18,7 +19,10 @@ const AddPatient = (props) => {
         body: {
             firstName, lastName, tcNo, phoneNumber, birthDate, doctorId
         },
-        onSuccess: () => Router.push('/patients')
+        onSuccess: () => {
+            Router.push('/patients')
+            toast("Hasta başarıyla kayıt edildi");
+        }
     });
 
     useEffect(() => {

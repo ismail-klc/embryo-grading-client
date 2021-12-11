@@ -4,6 +4,7 @@ import useRequest from '../../hooks/use-request'
 import Errors from "../../components/Errors";
 import Router from 'next/router';
 import Head from 'next/head'
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -18,7 +19,10 @@ const Register = () => {
     body: {
       firstName, lastName, email, password
     },
-    onSuccess: () => Router.push('/')
+    onSuccess: () => {
+      Router.push('/')
+      toast("Başarıyla kayıt oldunuz");
+    }
   });
 
   const submitHandler = async (e) => {

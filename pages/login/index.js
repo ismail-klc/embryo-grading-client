@@ -4,6 +4,7 @@ import useRequest from '../../hooks/use-request'
 import Errors from "../../components/Errors";
 import Router from 'next/router';
 import Head from 'next/head'
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,10 @@ const Login = () => {
     body: {
       email, password
     },
-    onSuccess: () => Router.push('/')
+    onSuccess: () => {
+      Router.push('/')
+      toast("Başarıyla giriş yapıldı");
+    }
   });
 
   const submitHandler = async (e) => {
