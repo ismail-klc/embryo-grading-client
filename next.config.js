@@ -8,5 +8,5 @@ module.exports = {
     images: {
         domains: ["media.istockphoto.com"],
     },
-    swcMinify: false
+    swcMinify: true
 }
