@@ -50,7 +50,7 @@ function DemoPage() {
             {
                 label && reviewImage &&
                 <div style={{ margin: '75px 0', textAlign: 'center' }}>
-                    <h2>{label}</h2>
+                    <h2 className='font-bold text-3xl'>{label}</h2>
                     <img
                         className="fileUploadImage"
                         src={reviewImage}
