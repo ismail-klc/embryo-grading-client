@@ -10,9 +10,6 @@ async function authMiddleware(req, res) {
 
     console.log(isValid);
 
-    if(!isValid && req.url !== "/login" )
-        return NextResponse.next()
-
     if(isValid && authUrls.includes(req.url))
         return NextResponse.redirect("/")
 

@@ -7,7 +7,6 @@ import Router from 'next/router';
 import { toast } from 'react-toastify';
 
 const AddPatient = (props) => {
-    const [doctorId, setDoctorId] = useState(0)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [tcNo, setTcNo] = useState("")
@@ -17,20 +16,13 @@ const AddPatient = (props) => {
         url: `${process.env.API}/patients`,
         method: 'post',
         body: {
-            firstName, lastName, tcNo, phoneNumber, birthDate, doctorId
+            firstName, lastName, tcNo, phoneNumber, birthDate
         },
         onSuccess: () => {
             Router.push('/patients')
             toast("Hasta başarıyla kayıt edildi");
         }
     });
-
-    useEffect(() => {
-        var tokens = props.cookies.jwt.split(".");
-        const id = JSON.parse(atob(tokens[1])).id
-        console.log(id);
-        setDoctorId(id.toString());
-    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -90,10 +82,3 @@ const AddPatient = (props) => {
 }
 
 export default AddPatient
-
-export const getServerSideProps = async (ctx) => {
-    const { req } = ctx
-    const { cookies } = req
-
-    return { props: { cookies } }
-}

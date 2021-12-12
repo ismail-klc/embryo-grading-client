@@ -128,10 +128,11 @@ export async function getServerSideProps(context) {
         const { data } = await axios.get(`${process.env.API}/patients/${id}`,
             {
                 headers: context.req.headers,
-                withCredentials: true
+                withCredentials: true,
             });
         return { props: { data } }
     } catch (error) {
+        console.log(error.message);
         return { notFound: true }
     }
 }
