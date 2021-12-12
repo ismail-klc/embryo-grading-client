@@ -7,6 +7,8 @@ async function authMiddleware(req, res) {
     const secret = process.env.SECRET || "a"
 
     let isValid = await jwt.verify(token, secret)
+
+    console.log(isValid, token);
     
     if(isValid && authUrls.includes(req.url))
         return NextResponse.redirect("/")
@@ -18,6 +20,8 @@ async function authMiddleware(req, res) {
 
     if (!isValid && !authUrls.includes(req.url))
         return NextResponse.redirect("/login")
+
+    return NextResponse.next();
 
     // let data;
 
