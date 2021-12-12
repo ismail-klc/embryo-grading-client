@@ -2,23 +2,23 @@ import { NextResponse } from 'next/server'
 import jwt from '@tsndr/cloudflare-worker-jwt'
 
 async function authMiddleware(req, res) {
-    const token = req.cookies.jwt || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    const authUrls = ["/login", "/register"]
-    const secret = process.env.SECRET || "a"
+    // const token = req.cookies.jwt || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    // const authUrls = ["/login", "/register"]
+    // const secret = process.env.SECRET || "a"
 
-    let isValid = await jwt.verify(token, secret)
+    // let isValid = await jwt.verify(token, secret)
 
-    console.log(isValid);
+    // console.log(isValid);
 
-    if(isValid && authUrls.includes(req.url))
-        return NextResponse.redirect("/")
+    // if(isValid && authUrls.includes(req.url))
+    //     return NextResponse.redirect("/")
 
-    if(isValid){
-        return NextResponse.next()
-    }
+    // if(isValid){
+    //     return NextResponse.next()
+    // }
 
-    if (!isValid && req.url !== "/login" && req.url !== "/register")
-        return NextResponse.redirect("/login")
+    // if (!isValid && req.url !== "/login" && req.url !== "/register")
+    //     return NextResponse.redirect("/login")
 
     // let data;
 
