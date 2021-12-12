@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps, data }) {
   const authUrls = ["/login", "/register"]
 
   useEffect(() => {
-    console.log(data);
+    console.log("data", data);
     if (!data && !authUrls.includes(Router.pathname)) {
       Router.push('/login').then(() => setLoading(false))
     }
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps, data }) {
       Router.push('/').then(() => setLoading(false))
     }
     else setLoading(false)
-  }, [])
+  }, [data])
 
   if (loading) return null
 
@@ -53,6 +53,7 @@ MyApp.getInitialProps = async (appContext) => {
       data: data
     };
   } catch (error) {
+    console.log(error.message);
     return {
       pageProps,
     };
