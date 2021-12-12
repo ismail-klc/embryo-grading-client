@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const buildClient = (props) => {
+    console.log( process.env.API);
     if (typeof window === 'undefined') {
         console.log('server');
         // we are on the server
