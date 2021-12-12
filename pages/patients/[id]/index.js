@@ -5,6 +5,7 @@ import Admin from '../../../components/Layouts/Admin'
 import Image from 'next/image'
 import Link from 'next/link'
 import { tr } from 'date-fns/locale'
+import buildClient from '../../../helpers/build-client'
 
 const PatientProfile = ({ data }) => {
 
@@ -124,12 +125,9 @@ export default PatientProfile
 
 export async function getServerSideProps(context) {
     const { id } = context.params;
+    const client = buildClient(context)
     try {
-        const { data } = await axios.get(`${process.env.API}/patients/${id}`,
-            {
-                headers: context.req.headers,
-                withCredentials: true,
-            });
+        const { data } = await client.get(`/patients/${id}`)
         return { props: { data } }
     } catch (error) {
         console.log(error.message);

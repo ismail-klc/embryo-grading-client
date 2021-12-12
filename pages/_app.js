@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
+import buildClient from '../helpers/build-client';
 
 function MyApp({ Component, pageProps, data }) {
   const [loading, setLoading] = useState(true)
@@ -38,24 +39,14 @@ function MyApp({ Component, pageProps, data }) {
 
 MyApp.getInitialProps = async (appContext) => {
   let pageProps = {};
-  const { req } = appContext.ctx;
+  const client = buildClient(appContext.ctx)
+
   if (appContext.Component.getInitialProps) {
     pageProps = await appContext.Component.getInitialProps(appContext.ctx)
   }
 
-  if (!req) {
-    return {
-      pageProps,
-    };
-  }
-
   try {
-    const { data } = await axios.get(`${process.env.API}/doctors/me`, {
-      withCredentials: true,
-      headers: req.headers
-    });
-
-    console.log(data);
+    const { data } = await client.get(`/doctors/me`)
 
     return {
       pageProps,
