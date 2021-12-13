@@ -2,12 +2,20 @@ import React, { useCallback, useState } from 'react'
 import Admin from '../../../../components/Layouts/Admin'
 import { useDropzone } from "react-dropzone";
 import axios from 'axios';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import useSWRImmutable from 'swr'
+import Custom404 from '../../../../components/NotFound';
 
-const AddRecord = ({ data }) => {
+const AddRecord = () => {
+    const router = useRouter()
+    const { id } = router.query
     const [images, setImages] = useState([])
     const [previews, setPreviews] = useState([])
+    
+    const { data, error } = useSWRImmutable(id ? `${process.env.API}/patients/${id}/records` : null)
+    
+    
 
     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
         acceptedFiles.forEach(file => {
@@ -59,6 +67,9 @@ const AddRecord = ({ data }) => {
         Router.push(`/patients/${data.id}/records`)
     }
 
+    if(error) return <Custom404 />
+    if(!data) return null
+
     return (
         <Admin title={"Yeni Kayıt Ekle"}>
             <div className='border-2 border-gray-600 border-dotted w-full h-80 bg-green-50 flex flex-1 items-center justify-center'
@@ -85,17 +96,3 @@ const AddRecord = ({ data }) => {
 }
 
 export default AddRecord
-
-export async function getServerSideProps(context) {
-    const { id } = context.params;
-    try {
-        const { data } = await axios.get(`${process.env.API}/patients/${id}`,
-            {
-                headers: context.req.headers,
-                withCredentials: true
-            });
-        return { props: { data } }
-    } catch (error) {
-        return { notFound: true }
-    }
-}

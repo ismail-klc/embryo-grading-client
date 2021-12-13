@@ -12,7 +12,7 @@ const PatientProfile = () => {
     const router = useRouter()
     const { id } = router.query
     
-    const { data, error } = useSWRImmutable(`${process.env.API}/patients/${id}`)
+    const { data, error } = useSWRImmutable(id ? `${process.env.API}/patients/${id}` : null)
     
     if(error) return <Custom404 />
     if(!data) return null
