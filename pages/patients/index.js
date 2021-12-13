@@ -2,8 +2,7 @@ import React from 'react'
 import Admin from '../../components/Layouts/Admin'
 import DataTable from 'react-data-table-component';
 import Link from "next/link";
-import useSWR from 'swr';
-import axios from 'axios';
+import useSWRImmutable from 'swr';
 import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
 
@@ -40,16 +39,15 @@ const columns = [
     },
 ];
 
-const fetcher = url => axios.get(url, { withCredentials: true }).then(res => res.data)
-
 const PatientsPage = () => {
-    const { data, error } = useSWR(`${process.env.API}/patients`, fetcher)
+    const { data, error } = useSWRImmutable(`${process.env.API}/patients`)
 
     return (
         <Admin title={"Hastalar"}>
             <DataTable
                 title="Hastalar"
                 columns={columns}
+                noDataComponent="Kayıtlı hastanız bulunmamaktadır"
                 data={data}
                 pagination
                 responsive

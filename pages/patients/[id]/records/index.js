@@ -1,9 +1,19 @@
-import axios from 'axios';
 import React from 'react'
 import Admin from '../../../../components/Layouts/Admin'
 import ImageCard from '../../../../components/Cards/ImageCard'
+import Custom404 from '../../../../components/NotFound'
+import { useRouter } from 'next/router'
+import useSWRImmutable from 'swr'
 
-const PatientRecords = ({ data }) => {
+const PatientRecords = () => {
+    const router = useRouter()
+    const { id } = router.query
+    
+    const { data, error } = useSWRImmutable(`${process.env.API}/patients/${id}/records`)
+    
+    if(error) return <Custom404 />
+    if(!data) return null
+
     return (
         <Admin title={"Hasta Kayıtları"}>
             <h2 className='text-2xl mb-4'>Hasta Kayıtları</h2>
@@ -20,18 +30,3 @@ const PatientRecords = ({ data }) => {
 }
 
 export default PatientRecords
-
-export async function getServerSideProps(context) {
-    const { id } = context.params;
-    try {
-        const { data } = await axios.get(`${process.env.API}/patients/${id}/records`,
-            {
-                headers: context.req.headers,
-                withCredentials: true
-            });
-        return { props: { data } }
-    } catch (error) {
-        console.log(error);
-        return { notFound: true }
-    }
-}

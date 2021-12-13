@@ -1,13 +1,21 @@
-import axios from 'axios'
 import { format } from 'date-fns'
 import React from 'react'
 import Admin from '../../../components/Layouts/Admin'
 import Image from 'next/image'
 import Link from 'next/link'
 import { tr } from 'date-fns/locale'
-import buildClient from '../../../helpers/build-client'
+import { useRouter } from 'next/router'
+import useSWRImmutable from 'swr'
+import Custom404 from '../../../components/NotFound'
 
-const PatientProfile = ({ data }) => {
+const PatientProfile = () => {
+    const router = useRouter()
+    const { id } = router.query
+    
+    const { data, error } = useSWRImmutable(`${process.env.API}/patients/${id}`)
+    
+    if(error) return <Custom404 />
+    if(!data) return null
 
     return (
         <Admin title={`Hasta - ${data.firstName} ${data.lastName}`}>
@@ -122,15 +130,3 @@ const PatientProfile = ({ data }) => {
 }
 
 export default PatientProfile
-
-export async function getServerSideProps(context) {
-    const { id } = context.params;
-    const client = buildClient(context)
-    try {
-        const { data } = await client.get(`/patients/${id}`)
-        return { props: { data } }
-    } catch (error) {
-        console.log(error.message);
-        return { notFound: true }
-    }
-}

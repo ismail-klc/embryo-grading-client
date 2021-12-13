@@ -4,60 +4,34 @@ import '../public/css/table.css'
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Router from 'next/router';
-import { useEffect, useState } from 'react';
-import buildClient from '../helpers/build-client';
+import useUser from '../hooks/use-user';
+import { SWRConfig } from 'swr'
+import axios from 'axios';
 
-function MyApp({ Component, pageProps, data }) {
-  const [loading, setLoading] = useState(true)
-  const authUrls = ["/login", "/register"]
+const fetcher = url => axios.get(url, { withCredentials: true }).then(res => res.data)
 
-  useEffect(() => {
-    console.log("data", data);
-    if (!data && !authUrls.includes(Router.pathname)) {
-      Router.push('/login').then(() => setLoading(false))
-    }
-    else if (data && authUrls.includes(Router.pathname)) {
-      Router.push('/').then(() => setLoading(false))
-    }
-    else setLoading(false)
-  }, [data])
+function MyApp({ Component, pageProps }) {
+  const { loading } = useUser({
+    redirectTo: "/login",
+  });
 
-  if (loading) return null
+  if (loading) {
+    return null
+  }
 
   return (
-    <>
+    <SWRConfig
+      value={{
+        fetcher: fetcher
+      }}>
       <Component {...pageProps} />
       <ToastContainer
         position="bottom-right"
         hideProgressBar
         theme='dark'
       />
-    </>
+    </SWRConfig>
   )
-}
-
-MyApp.getInitialProps = async (appContext) => {
-  let pageProps = {};
-  const client = buildClient(appContext.ctx)
-
-  if (appContext.Component.getInitialProps) {
-    pageProps = await appContext.Component.getInitialProps(appContext.ctx)
-  }
-
-  try {
-    const { data } = await client.get(`/doctors/me`)
-
-    return {
-      pageProps,
-      data: data
-    };
-  } catch (error) {
-    console.log(error.message);
-    return {
-      pageProps,
-    };
-  }
 }
 
 export default MyApp

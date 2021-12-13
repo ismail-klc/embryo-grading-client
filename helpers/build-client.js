@@ -3,10 +3,11 @@ import axios from 'axios';
 const buildClient = (props) => {
     if (typeof window === 'undefined') {
         // we are on the server
+
         return axios.create({
             baseURL: process.env.API,
             headers: props.req.headers,
-            withCredentials: true
+            withCredentials: true,
         });
     }
 
