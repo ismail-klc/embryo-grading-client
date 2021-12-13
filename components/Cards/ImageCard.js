@@ -5,7 +5,7 @@ import { tr } from 'date-fns/locale'
 const ImageCard = ({ image }) => {
     return (
         <div className='max-w-sm rounded overflow-hidden shadow-lg'>
-            <img src={`http://localhost:3001/${image.url}`} className='w-full' alt={image.label}/>
+            <img src={`${process.env.UPLOAD}/${image.url}`} className='w-full' alt={image.label}/>
             <div className='px-6 py-4'>
                 <ul>
                     <li><strong>Etiket: </strong>{image.label}</li>
