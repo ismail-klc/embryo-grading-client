@@ -13,9 +13,7 @@ const AddRecord = () => {
     const [images, setImages] = useState([])
     const [previews, setPreviews] = useState([])
     
-    const { data, error } = useSWRImmutable(id ? `${process.env.API}/patients/${id}/records` : null)
-    
-    
+    const { data, error } = useSWRImmutable(id ? `${process.env.API}/patients/${id}` : null)
 
     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
         acceptedFiles.forEach(file => {
