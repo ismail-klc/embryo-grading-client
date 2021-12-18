@@ -8,7 +8,7 @@ module.exports = {
         UPLOAD: process.env.UPLOAD
     },
     images: {
-        domains: ["media.istockphoto.com"],
+        domains: ["media.istockphoto.com","e7.pngegg.com"],
     },
     swcMinify: true
 }

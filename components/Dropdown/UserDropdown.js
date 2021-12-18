@@ -32,7 +32,7 @@ const UserDropdown = () => {
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
             <Image
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src="/img/team-1-800x800.jpg"
+              src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png"
               alt="Picture of the author"
               width={500}
               height={500}
@@ -47,15 +47,15 @@ const UserDropdown = () => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Action
-        </a>
+        <Link href="/profile">
+          <a
+            className={
+              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            }
+          >
+            Profil
+          </a>
+        </Link>
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
         <Link href="/logout">
           <a

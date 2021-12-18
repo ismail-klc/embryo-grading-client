@@ -25,7 +25,7 @@ function ImageUpload(props) {
     }
 
     return (
-        <div className="fileUpload -mt-14">
+        <div className="fileUpload">
             <button className="fileUploadBtn" type="button" onClick={onButtonClick}>Resim Ekle</button>
             {
                 !imgPath &&
