@@ -31,8 +31,7 @@ function ImageUpload(props) {
                 !imgPath &&
                 <div className="imageUploadWrap">
                     <input
-                        value={props.image}
-                        className="fileUploadInput" ref={inputFile} type='file' onChange={readURL} accept="image/*" />
+                        className={`fileUploadInput `} ref={inputFile} type='file' onChange={readURL} accept="image/*" />
                     <div className="dragText">
                         <h3>Resmi sürükle bırak veya bir resim seçmek için tıkla</h3>
                     </div>
@@ -42,7 +41,7 @@ function ImageUpload(props) {
                 imgPath &&
                 <div className="fileUploadContent">
                     <Image
-                        className="fileUploadImage py-4"
+                        className="py-4 fileUploadImage"
                         src={imgPath}
                         alt="your image"
                         width={400}
