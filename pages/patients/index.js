@@ -2,7 +2,7 @@ import React from 'react'
 import Admin from '../../components/Layouts/Admin'
 import DataTable from 'react-data-table-component';
 import Link from "next/link";
-import useSWRImmutable from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
 
@@ -32,7 +32,7 @@ const columns = [
         name: '',
         selector: row =>
             <Link href={`/patients/${row.id}`}>
-                <a aria-label="detail-page" className="py-2 px-3 flex text-white rounded-md bg-gray-600">
+                <a aria-label="detail-page" className="flex px-3 py-2 text-white bg-gray-600 rounded-md">
                     Detay
                 </a>
             </Link>,
