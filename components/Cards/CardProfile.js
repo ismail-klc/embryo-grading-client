@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Clock from "react-clock";
 import "react-clock/dist/Clock.css";
 
-// components
-
 export default function CardProfile() {
   const [value, setValue] = useState(new Date());
 
@@ -17,26 +15,26 @@ export default function CardProfile() {
 
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+      <div className="relative flex flex-col w-full min-w-0 mt-16 mb-6 break-words bg-white rounded-lg shadow-xl">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
-            <div className="w-full px-4 flex justify-center"></div>
-            <div className="w-full px-4 text-center mt-20">
-              <div className="flex justify-center py-1 lg:pt-1 pt-1">
+            <div className="flex justify-center w-full px-4"></div>
+            <div className="w-full px-4 mt-20 text-center">
+              <div className="flex justify-center py-1 pt-1 lg:pt-1">
                 <Clock value={value} />
               </div>
             </div>
           </div>
-          <div className="text-center mt-12">
-            <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700">
+          <div className="mt-12 text-center">
+            <h3 className="mb-2 text-xl font-semibold leading-normal text-blueGray-700">
               Hoşgeldiniz
             </h3>
-            <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-              <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
+            <div className="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400">
+              <i className="mr-2 text-lg fas fa-map-marker-alt text-blueGray-400"></i>{" "}
               EMBRİYO SINIFLANDIRMA DESKTEK SİSTEMİ
             </div>
           </div>
-          <div className="mt-10 py-10 border-t border-blueGray-200 text-justify">
+          <div className="py-10 mt-10 text-justify border-t border-blueGray-200">
             <div className="flex flex-wrap justify-center">
               <div className="w-full lg:w-9/12">
                 <p className="mb-4 text-lg leading-relaxed text-blueGray-700">

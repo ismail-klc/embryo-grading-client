@@ -5,17 +5,17 @@ import Admin from "../components/Layouts/Admin";
 
 export default function Home(props) {
   const { data, error } = useSWRImmutable(`${process.env.API}/doctors/stats`)
-  
-  if(!data) return null
+
+  if (!data) return null
 
   return (
     <Admin title="Anasayfa">
-      <CardProfile />
-      <div className="flex justify-around">
-        <CardStats title={"Doktor sayısı"} count={data.doctorCount}/>
-        <CardStats title={"Hasta sayısı"} count={data.patientCount}/>
-        <CardStats title={"Kayıt sayısı"} count={data.recordCount}/>
+      <div className="flex justify-around space-x-10">
+        <CardStats title={"Doktor sayısı"} count={data.doctorCount} color={"bg-red-500"}/>
+        <CardStats title={"Hasta sayısı"} count={data.patientCount} color={"bg-blue-500"}/>
+        <CardStats title={"Kayıt sayısı"} count={data.recordCount} color={"bg-green-500"}/>
       </div>
+      <CardProfile />
     </Admin>
   );
 }
