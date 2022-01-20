@@ -11,12 +11,13 @@ export default function Home(props) {
 
   return (
     <Admin title="Anasayfa">
-      <CardBarChart />
-      <CardLineChart />
-      <CardPageVisits />
       <CardProfile />
-      <CardSocialTraffic />
-      <CardStats />
+      <div className="flex justify-between w-full">
+        <CardStats />
+        <CardStats />
+        <CardStats />
+        <CardStats />
+      </div>
     </Admin>
   );
 }

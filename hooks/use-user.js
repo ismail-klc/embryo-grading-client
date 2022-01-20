@@ -11,7 +11,10 @@ export default function useUser({
 } = {}) {
 
     const [loading, setLoading] = useState(true)
-    const { data: user, mutate: mutateUser, error, isValidating } = useSWRImmutable(`${process.env.API}/doctors/me`, fetcher);
+    const { data: user, mutate: mutateUser, error, isValidating } = useSWRImmutable(`${process.env.API}/doctors/me`, fetcher, {
+        revalidateIfStale: false,
+        
+    });
     const authNotRequired = ["/login", "/register"]
 
     useEffect(() => {
