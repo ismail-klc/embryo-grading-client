@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Router from "next/router";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import axios from "axios";
 
 const fetcher = url => axios.get(url, { withCredentials: true }).then(res => res.data)
@@ -11,9 +11,11 @@ export default function useUser({
 } = {}) {
 
     const [loading, setLoading] = useState(true)
-    const { data: user, mutate: mutateUser, error, isValidating } = useSWR(`${process.env.API}/doctors/me`, fetcher);
+    const { data: user, mutate: mutateUser, error, isValidating } = useSWRImmutable(`${process.env.API}/doctors/me`, fetcher);
+    const authNotRequired = ["/login", "/register"]
 
     useEffect(() => {
+
         if (isValidating) {
             return;
         }
@@ -23,7 +25,7 @@ export default function useUser({
             return;
         }
 
-        if (redirectTo && !user) {
+        if (redirectTo && !user && !authNotRequired.includes(Router.pathname)) {
             Router.push(redirectTo).then(() => setLoading(false));
         } else setLoading(false)
     }, [user, redirectIfFound, redirectTo, error]);

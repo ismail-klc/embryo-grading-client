@@ -12,13 +12,13 @@ const fetcher = (url) =>
   axios.get(url, { withCredentials: true }).then((res) => res.data);
 
 function MyApp({ Component, pageProps }) {
-  /*  const { loading } = useUser({
+  const { loading } = useUser({
     redirectTo: "/login",
   });
 
   if (loading) {
     return null
-  } */
+  }
 
   return (
     <SWRConfig
